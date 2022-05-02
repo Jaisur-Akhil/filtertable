@@ -1,7 +1,7 @@
 /** @format */
 
 import './App.css';
-
+import Table from './Table';
 import { Users } from './user';
 
 import React, { useState } from 'react';
@@ -10,9 +10,11 @@ function App() {
   const [query, setQuery] = useState('');
   console.log(query);
 
-  console.log(
-    Users.filter((user) => user.first_name.toLowerCase().includes(query))
-  );
+  const search = (Users) => {
+    return Users.filter((user) =>
+      user.first_name.toLowerCase().includes(query)
+    );
+  };
 
   return (
     <div className='App'>
@@ -24,15 +26,8 @@ function App() {
           setQuery(e.target.value);
         }}
       />
-      <ul className='list'>
-        {Users.filter((user) =>
-          user.first_name.toLowerCase().includes(query)
-        ).map((user) => (
-          <li key={user.id} className='listitem'>
-            {user.first_name}{' '}
-          </li>
-        ))}
-      </ul>
+
+      <Table data={search(Users)} />
     </div>
   );
 }
@@ -51,4 +46,14 @@ Map
 
 
       Map+ filter
+
+       <ul className='list'>
+        {Users.filter((user) =>
+          user.first_name.toLowerCase().includes(query)
+        ).map((user) => (
+          <li key={user.id} className='listitem'>
+            {user.first_name}{' '}
+          </li>
+        ))}
+      </ul>
 */

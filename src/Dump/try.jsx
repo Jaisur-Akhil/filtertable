@@ -1,6 +1,6 @@
 /** @format */
 
-import { Users } from './user';
+import { Users } from '../user';
 
 import React from 'react';
 
