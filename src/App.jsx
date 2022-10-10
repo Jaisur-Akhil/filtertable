@@ -10,11 +10,12 @@ function App() {
   const [query, setQuery] = useState('');
   console.log(query);
 
+  const columns = ['first_name', 'last_name', 'email'];
   const search = (Users) => {
     return Users.filter((user) =>
-      user.first_name.toLowerCase().includes(query)
+      columns.some((key) => user[key].toLowerCase().includes(query))
     );
-  };
+  }; //Users[0]['email']
 
   return (
     <div className='App'>
@@ -56,4 +57,14 @@ Map
           </li>
         ))}
       </ul>
+
+
+       const search = (Users) => {
+    return Users.filter(
+      (user) =>
+        user.first_name.toLowerCase().includes(query) ||
+        user.last_name.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
+    );
+  };
 */
